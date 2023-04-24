@@ -134,6 +134,35 @@ You can verify the functionality of the application by sending a curl request to
 curl localhost/WeatherForecast
 ```
 
+## One-click Install Script
+
+You can create a one-click install script to automate the deployment process. Here is an example script:
+```bash
+#!/bin/bash
+
+# Clone the repository
+git clone https://github.com/metinekinci/goart_case.git
+
+cd goart_case
+
+# Build and push the Docker image to DockerHub
+docker build -t <dockerhub-username>/goart-case:latest .
+docker login -u <dockerhub-username>
+docker push <dockerhub-username>/goart-case:latest
+
+# Manipulate the manifest file
+sed -i 's/metinekinci/<dockerhub-username>/g' kube-manifest.yaml
+
+# Create a Kubernetes deployment and service
+kubectl apply -f kube-manifest.yaml
+```
+
+This script performs the following steps:
+- Clones the [goart_case](https://github.com/metinekinci/goart_case.git) repository.
+- Builds and pushes the Docker image to DockerHub.
+- The script manipulates the Kubernetes manifest file to make it available to the account of the person running the script.
+- Applies the manifest file.
+
 ## Conclusion
 
 This documentation explained how to Dockerize a .NET Core web app and deploy it on a Kubernetes cluster with an Ingress and a Service. It also included instructions for uploading the Docker image to DockerHub and creating a one-click install script.
