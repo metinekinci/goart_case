@@ -36,7 +36,6 @@ ENTRYPOINT ["dotnet", "sample-app.dll"]
 This Dockerfile uses two stages to build the app. In the first stage, it restores the dependencies and builds the app, and in the second stage, it copies the built app and runs it.
 
 
-
 Build the Docker image with a tag name of your choice:
 ```bash
 docker build -t metinekinci/goart-case:latest .
@@ -52,6 +51,9 @@ Push the Docker image to DockerHub:
 ```bash
 docker push metinekinci/goart-case:latest
 ```
+
+> **_NOTE:_**  The Docker image, which was generated using the following Dockerfile, has been pushed to Docker Hub and can be accessed via this link.
+https://hub.docker.com/r/metinekinci/goart-case/tags
 
 ## Deploy the Sample-app on Kubernetes
 
@@ -134,4 +136,4 @@ curl localhost/WeatherForecast
 
 ## Conclusion
 
-This README file explained how to Dockerize a .NET Core web app and deploy it on a Kubernetes cluster with an Ingress and a Service. It also included instructions for uploading the Docker image to DockerHub and creating a one-click install script.
+This documentation explained how to Dockerize a .NET Core web app and deploy it on a Kubernetes cluster with an Ingress and a Service. It also included instructions for uploading the Docker image to DockerHub and creating a one-click install script.
