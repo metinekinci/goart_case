@@ -1,6 +1,4 @@
-# Goart Metaverse Case Study
-
-The purpose of this documentation is to present a solution for a case study that has been developed specifically for the recruitment process of the GoArt Company.
+# Sample app
 
 ## Prerequisites
 - A local machine with Docker installed.
@@ -38,7 +36,7 @@ This Dockerfile uses two stages to build the app. In the first stage, it restore
 
 Build the Docker image with a tag name of your choice:
 ```bash
-docker build -t metinekinci/goart-case:latest .
+docker build -t username/sample-app:latest .
 ```
 ## Upload the Docker Image to DockerHub
 Login to DockerHub with your DockerHub credentials:
@@ -49,11 +47,8 @@ docker login -u username
 
 Push the Docker image to DockerHub:
 ```bash
-docker push metinekinci/goart-case:latest
+docker push username/sample-app:latest
 ```
-
-> **_NOTE:_**  The Docker image, which was generated using the following Dockerfile, has been pushed to Docker Hub and can be accessed via this link.
-https://hub.docker.com/r/metinekinci/goart-case/tags
 
 ## Deploy the Sample-app on Kubernetes
 
@@ -76,7 +71,7 @@ spec:
     spec:
       containers:
       - name: sample-app
-        image: metinekinci/goart-case:latest
+        image: username/sample-app:latest
         ports:
         - containerPort: 80
 ```
@@ -141,14 +136,14 @@ You can create a one-click install script to automate the deployment process. He
 #!/bin/bash
 
 # Clone the repository
-git clone https://github.com/metinekinci/goart_case.git
+git clone https://github.com/metinekinci/sample-app.git
 
-cd goart_case
+cd sample-app
 
 # Build and push the Docker image to DockerHub
-docker build -t <dockerhub-username>/goart-case:latest .
+docker build -t <dockerhub-username>/sample-app:latest .
 docker login -u <dockerhub-username>
-docker push <dockerhub-username>/goart-case:latest
+docker push <dockerhub-username>/sample-app:latest
 
 # Manipulate the manifest file
 sed -i 's/metinekinci/<dockerhub-username>/g' kube-manifest.yaml
@@ -158,7 +153,7 @@ kubectl apply -f kube-manifest.yaml
 ```
 
 This script performs the following steps:
-- Clones the [goart_case](https://github.com/metinekinci/goart_case.git) repository.
+- Clones the [sample-app](https://github.com/metinekinci/sample-app.git) repository.
 - Builds and pushes the Docker image to DockerHub.
 - The script manipulates the Kubernetes manifest file to make it available to the account of the person running the script.
 - Applies the manifest file.

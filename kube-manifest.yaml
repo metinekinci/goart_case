@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sample-app
-        image: metinekinci/goart-case:latest
+        image: username/sample-app:latest
         ports:
         - containerPort: 80
 ---
