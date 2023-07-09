@@ -5,16 +5,9 @@
 - A Kubernetes cluster with kubectl installed and configured.
 - A DockerHub account.
 
-## Clone the Sample-app
-
-Clone the sample-app repository from GitHub:
-```bash
-git clone https://github.com/roofstacks/case-study-pool.git
-```
 ## Dockerize the Sample-app
 
-
-Create a Dockerfile in the ```~/case-study-pool/infrastructure-developer/mini-cluster/sample-app/``` directory of the sample-app project with the following content:
+Create a Dockerfile in the ```~/sample-app/``` directory of the sample-app project with the following content:
 
 ```Dockerfile
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
